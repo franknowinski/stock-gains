@@ -27,6 +27,11 @@ angular
           });
         }]
       })
+      .state('home.stocks', {
+        url: 'stocks',
+        templateUrl: 'stocks/stocks.html',
+        controller: 'StocksController as stocks'
+      })
       .state('home.portfolio', {
         url: 'portfolio',
         templateUrl: 'portfolio/portfolio.html',

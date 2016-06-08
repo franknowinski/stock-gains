@@ -1,9 +1,9 @@
 function NavbarController($scope, $state, Auth){
   $scope.signedIn = Auth.isAuthenticated;
-  
+
   $scope.logout = function(){
     Auth.logout().then(function(user){
-      Materialize.toast('Goodbye ' + user.email + '!', 2000);
+      Materialize.toast('Goodbye!', 2000);
     });
   };
 
@@ -12,7 +12,6 @@ function NavbarController($scope, $state, Auth){
   });
 
   $scope.$on('devise:new-registration', function(e, user) {
-    // $scope.signedIn = true;
     $scope.user = user;
   });
 
@@ -21,7 +20,6 @@ function NavbarController($scope, $state, Auth){
   });
 
   $scope.$on('devise:logout', function(e, user) {
-    // $scope.signedIn = false;/
     $scope.user = {};
   });
 };

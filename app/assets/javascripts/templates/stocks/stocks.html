@@ -1,0 +1,52 @@
+<h3 class="thin center-align">Lookup Stocks</h3><br>
+
+<div ng-show="stocks.error" class="row center-align red-text text-red-darken-1">
+  {{ stocks.error }}
+</div>
+
+<div class="row">
+  <form class="col s12" ng-submit="stocks.lookup()">
+    <div class="row">
+      <div class="input-field col s12 l6 offset-l3">
+        <i class="material-icons prefix">search</i>
+        <input id="icon_prefix" type="text" class="validate" ng-model="stocks.ticker">
+        <label for="icon_prefix">Stock Ticker</label>
+      </div>
+    </div>
+  </form>
+
+  <div ng-show="stocks.stockData" class="row">
+    <table class="highlight responsive-table col s10 offset-s1 center-align">
+      <thead>
+        <tr>
+          <th data-field="id">Symbol</th>
+          <th data-field="name">Price</th>
+          <th data-field="price">Change</th>
+          <th data-field="name">Days Range</th>
+          <th data-field="name">Year Range</th>
+          <th data-field="name">Previous Close</th>
+          <th data-field="price">EPS</th>
+          <th data-field="price">PERatio</th>
+          <th data-field="price">50 Day MA</th>
+          <th data-field="price">200 Day MA</th>
+          <th data-field="price">Volume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="teal-text" ng-repeat="stock in stocks.stockData track by $index">
+          <td>{{stock.symbol | uppercase}}</td>
+          <td>${{stock.Ask}}</td>
+          <td>{{stock.Change}}</td>
+          <td>${{stock.DaysRange}}</td>
+          <td>${{stock.YearRange}}</td>
+          <td>${{stock.PreviousClose}}</td>
+          <td>{{stock.EarningsShare}}</td>
+          <td>{{stock.PERatio}}</td>
+          <td>${{stock.FiftydayMovingAverage}}</td>
+          <td>${{stock.TwoHundreddayMovingAverage}}</td>
+          <td>{{stock.Volume}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
