@@ -1,0 +1,22 @@
+{
+  "name": "stock-gains",
+  "authors": [
+    "frankNowinski <nowinski.frank@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.6",
+    "angular-ui-router": "^0.3.1",
+    "AngularDevise": "angular-devise#^1.3.0"
+  }
+}
