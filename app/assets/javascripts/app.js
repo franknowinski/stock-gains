@@ -35,8 +35,8 @@ angular
       .state('home.portfolio', {
         url: 'portfolio',
         templateUrl: 'portfolio/portfolio.html',
-        controller: 'PortfolioController'
+        controller: 'PortfolioController as portfolio'
       });
 
-      $urlRouterProvider.otherwise('/')
-    })
+      $urlRouterProvider.otherwise('/');
+    });

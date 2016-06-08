@@ -1,5 +1,4 @@
-function PortfolioController($scope, $state, Auth){
-
+function PortfolioController(){
 };
 angular
   .module('app')

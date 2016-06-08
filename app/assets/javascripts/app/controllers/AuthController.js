@@ -1,8 +1,12 @@
 function AuthController($scope, $state, Auth){
+  function welcomeMessage(){
+    $state.go('home');
+    return Materialize.toast('Welcome!', 2000);
+  };
+
   $scope.login = function(){
     Auth.login(this.user).then(function(user){
-      Materialize.toast('Welcome!', 2000);
-      $state.go('home');
+      welcomeMessage();
     }, function(error){
       $scope.error = error.data.error;
     });
@@ -10,8 +14,7 @@ function AuthController($scope, $state, Auth){
 
   $scope.register = function(){
     Auth.register($scope.user ).then(function(user){
-      Materialize.toast('Welcome!', 2000);
-      $state.go('home');
+      welcomeMessage();
     }, function(error){
       if (error.data.errors.email){
         $scope.error = 'Email ' + error.data.errors.email;

@@ -11,7 +11,7 @@ function StockService($http) {
       } else {
         return res.data.query.results.quote;
       }
-    })
+    });
   };
 };
 
