@@ -26,6 +26,11 @@ angular
             $state.go('home');
           });
         }]
+      })
+      .state('home.portfolio', {
+        url: 'portfolio',
+        templateUrl: 'portfolio/portfolio.html',
+        controller: 'PortfolioController'
       });
 
       $urlRouterProvider.otherwise('/')
