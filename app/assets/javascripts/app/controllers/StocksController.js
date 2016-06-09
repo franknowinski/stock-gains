@@ -1,5 +1,5 @@
 function StocksController($scope, StockService){
-  ctrl = this;
+  var ctrl = this;
   ctrl.stockData = [];
 
   ctrl.lookup = function(){

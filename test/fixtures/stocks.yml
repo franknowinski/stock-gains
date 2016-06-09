@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  percent_change: 1
+  price: 1
+  days_range: 1
+  year_range: 1
+  previous_close: 1
+  eps: 1
+  per: 1
+  one_year_target: 1
+
+two:
+  name: MyString
+  percent_change: 1
+  price: 1
+  days_range: 1
+  year_range: 1
+  previous_close: 1
+  eps: 1
+  per: 1
+  one_year_target: 1
