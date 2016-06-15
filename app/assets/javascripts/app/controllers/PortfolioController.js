@@ -1,9 +1,9 @@
 function PortfolioController(StockService){
   var ctrl = this;
 
-  ctrl.addStock = function(){
-    verifyStock(this.ticker)
-  };
+  // ctrl.addStock = function(){
+  //   verifyStock(this.ticker)
+  // };
 
   function verifyStock(ticker) {
     ctrl.error = '';
