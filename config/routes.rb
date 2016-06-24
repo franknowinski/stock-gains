@@ -1,11 +1,3 @@
-# Rails.application.routes.draw do
-#   get 'stocks/create'
-#
-#   devise_for :users
-#   root 'application#angular'
-# end
-
-
 Rails.application.routes.draw do
   root 'application#angular'
   devise_for :users

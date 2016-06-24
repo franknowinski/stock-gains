@@ -27,20 +27,20 @@
           <th data-field="name">Previous Close</th>
           <th data-field="price">1 Year Target</th>
           <th data-field="price">EPS</th>
-          <th data-field="price">PERatio</th>
+          <th data-field="price">Volume</th>
         </tr>
       </thead>
       <tbody>
         <tr class="teal-text" ng-repeat="stock in stocks.stockData">
           <td>{{stock.symbol | uppercase}}</td>
           <td>${{stock.Ask}}</td>
-          <td>{{stock.ChangeinPercent}}</td>
+          <td>{{stock.PercentChange}}</td>
           <td>${{stock.DaysRange}}</td>
           <td>${{stock.YearRange}}</td>
           <td>${{stock.PreviousClose}}</td>
           <td>${{stock.OneyrTargetPrice}}</td>
           <td>{{stock.EarningsShare}}</td>
-          <td>{{stock.PERatio}}</td>
+          <td>{{stock.Volume | number}}</td>
         </tr>
       </tbody>
     </table>
