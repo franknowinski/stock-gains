@@ -1,15 +1,26 @@
-function PortfolioController(StockService){
+function PortfolioController(StockService, PortfolioService){
   var ctrl = this;
 
-  // ctrl.addStock = function(){
-  //   verifyStock(this.ticker)
+  // function verifyStock(ticker) {
+  //   ctrl.error = '';
+  //   StockService.queryStock(ticker).then(function(stock){
+  //     if (typeof(stock) == "string"){
+  //       ctrl.error =  stock;
+  //     }
+  //   });
   // };
 
-  function verifyStock(ticker) {
+  ctrl.addStock = function(){
     ctrl.error = '';
-    StockService.queryStock(ticker).then(function(stock){
+    StockService.queryStock(this.stock.ticker).then(function(stock){
       if (typeof(stock) == "string"){
         ctrl.error =  stock;
+        ctrl.stock.ticker = '';
+        ctrl.stock.shares = '';
+      } else {
+        PortfolioService.persistStock(ctrl).then(function(stock){
+          debugger;
+        })
       }
     });
   };

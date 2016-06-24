@@ -10,6 +10,7 @@ class CreateStocks < ActiveRecord::Migration
       t.integer :eps
       t.integer :per
       t.integer :one_year_target
+      t.integer :shares
 
       t.timestamps null: false
     end

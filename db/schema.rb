@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160608220418) do
     t.integer  "eps"
     t.integer  "per"
     t.integer  "one_year_target"
+    t.integer  "shares"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
