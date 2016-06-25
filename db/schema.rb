@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160608220418) do
     t.integer  "volume"
     t.decimal  "oneyr_target_price"
     t.integer  "shares"
+    t.integer  "user_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end

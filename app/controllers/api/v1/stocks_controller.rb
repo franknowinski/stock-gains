@@ -1,8 +1,12 @@
 class Api::V1::StocksController < ApplicationController
   respond_to :json
 
+  def index
+    render json: current_user.stocks
+  end
+
   def create
-    render json: Stock.create(stock_params)
+    render json: current_user.stocks.create(stock_params)
   end
 
   private

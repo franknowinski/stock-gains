@@ -1,13 +1,12 @@
-function PortfolioController(StockService, PortfolioService, Stock){
+function PortfolioController(Auth, Stock, StockService){
   var ctrl = this;
 
   function clearForm(error) {
-    ctrl.error = error; ctrl.stock = '';
+    ctrl.error = error, ctrl.stock = '';
   };
 
   function formatStockObject(stock, shares){
     stockObject = {};
-
     for (var key in stock){
       words = key.match(/[A-Z][a-z]+/g);
       if (words != null) {
@@ -19,20 +18,25 @@ function PortfolioController(StockService, PortfolioService, Stock){
     };
     stockObject["shares"] = shares;
     return stockObject;
-  }
+  };
 
   ctrl.addStock = function(){
     ctrl.error = '';
-    StockService.queryStock(this.stock.ticker).then(function(stock){
+    StockService.queryStock(this.stock.ticker, ctrl.user).then(function(stock){
       if (typeof(stock) == "string"){
         clearForm(stock);
       } else {
-        Stock.create({stock: formatStockObject(stock, ctrl.stock.shares)}, function(res){
-          debugger;
+        Stock.create({stock: formatStockObject(stock, ctrl.stock.shares)}, function(stock){
+          ctrl.stocks.push(stock), ctrl.stock = '', ctrl.displayForm = false;
         });
-      }
+      };
     });
   };
+
+  Auth.currentUser().then(function(user){
+    ctrl.user = user;
+    ctrl.stocks = user.stocks;
+  });
 };
 
 angular

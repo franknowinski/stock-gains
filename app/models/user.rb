@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :stocks
+
+  def as_json(options = {})
+    super(options.merge(include: [:stocks]))
+  end
 end

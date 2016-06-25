@@ -1,7 +1,8 @@
 function Stock($resource){
 
   return $resource('/api/v1/stocks', {user_id: '@userId'}, {
-    get: {method: 'GET', isArray: true},
+    // query: {method: 'GET', isArray: true},
+    // get: {method: 'GET', isArray: true},
     create: {method: 'POST'},
     delete: { method: 'DELETE' }
   });

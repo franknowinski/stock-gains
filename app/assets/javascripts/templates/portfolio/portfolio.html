@@ -1,8 +1,8 @@
-<div ng-hide="true" class="row center-align">
-  <h5><a class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="right" data-delay="50" data-tooltip="Add a stock to your portfolio"><i class="material-icons" ng-click="displayForm = true">add</i></a></h5>
+<div ng-hide="portfolio.displayForm" class="row center-align">
+  <h5><a class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="right" data-delay="50" data-tooltip="Add a stock to your portfolio"><i class="material-icons" ng-click="portfolio.displayForm = true">add</i></a></h5>
 </div>
 
-<div class="row" ng-show="true"><br>
+<div class="row" ng-show="portfolio.displayForm"><br>
 <h5 class="center-align thin">Add stock to your portfolio</h5>
 
 <div ng-show="portfolio.error" class="row center-align red-text text-red-darken-1">
@@ -28,3 +28,8 @@
     </button>
   </form>
 </div>
+
+<h3 class="thin center-align">Stocks</h3>
+<ul ng-repeat="stock in portfolio.stocks">
+  <li>{{ stock.name }}</li>
+</ul>

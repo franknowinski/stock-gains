@@ -12,6 +12,7 @@ class CreateStocks < ActiveRecord::Migration
       t.integer :volume
       t.decimal :oneyr_target_price
       t.integer :shares
+      t.integer :user_id
 
       t.timestamps null: false
     end
