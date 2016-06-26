@@ -24,6 +24,7 @@ function AuthController($scope, $state, Auth){
     });
   };
 };
+
 angular
   .module('app')
   .controller('AuthController', AuthController);

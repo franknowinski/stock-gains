@@ -5,7 +5,9 @@ function StockService($http) {
   };
 
   function validateNewStock(user, symbol){
-    return user.stocks.map(function(s){return s.symbol;}).includes(symbol);
+    if (user != undefined) {
+      return user.stocks.map(function(s){return s.symbol;}).includes(symbol);
+    };
   };
 
   this.queryStock = function(ticker, user) {
@@ -14,7 +16,7 @@ function StockService($http) {
       if (quote.Ask == null) {
         return 'Unable to find stock data for that ticker.'
       } else if (validateNewStock(user, quote.symbol)) {
-          return quote.Name + ' is already apart of your portfolio.';
+        return quote.Name + ' is already apart of your portfolio.';
       } else {
         return quote;
       };

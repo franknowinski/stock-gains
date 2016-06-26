@@ -1,13 +1,20 @@
-<div ng-hide="portfolio.displayForm" class="row center-align">
-  <h5><a class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="right" data-delay="50" data-tooltip="Add a stock to your portfolio"><i class="material-icons" ng-click="portfolio.displayForm = true">add</i></a></h5>
+<div class="row">
+  <h3 class="center-align col l4 m6 s12 offset-l4 offset-m3 thin" ng-hide="portfolio.displayForm">Stock Portfolio</h3>
+
+  <div ng-hide="portfolio.displayForm" class="col m2">
+    <h4><a class="btn-floating waves-effect waves-light teal btn tooltipped add-stock-circle-button" data-position="right" data-delay="50" data-tooltip="Add a stock to your portfolio"><i class="material-icons" ng-click="portfolio.displayForm = true">add</i></a></h4>
+  </div>
+
+  <button class="btn waves-effect waves-light col s7 offset-s2 add-stock-button" type="submit" name="action" ng-click="portfolio.displayForm = true" ng-hide="portfolio.displayForm">Add Stock
+  </button>
 </div>
 
 <div class="row" ng-show="portfolio.displayForm"><br>
-<h5 class="center-align thin">Add stock to your portfolio</h5>
+  <h4 class="center-align thin col s10 offset-s1">Add stock to your portfolio</h4>
 
-<div ng-show="portfolio.error" class="row center-align red-text text-red-darken-1">
-  {{ portfolio.error }}
-</div>
+  <div ng-show="portfolio.error" class="row center-align red-text text-red-darken-1">
+    {{ portfolio.error }}
+  </div>
 
   <form class="col s12" ng-submit="portfolio.addStock()">
     <div class="row">
@@ -24,12 +31,14 @@
       </div>
     </div>
 
-    <button class="btn waves-effect waves-light col s6 l4 offset-l4 offset-s3" type="submit" name="action">Submit
+    <button class="btn waves-effect waves-light col s7 l4 offset-l4 offset-s2" type="submit" name="action">Submit
+    </button>
+
+    <button class="btn waves-effect waves-light col s7 l4 offset-l4 offset-s2 white cancel-add-stock-button" type="submit" name="action" ng-click="portfolio.displayForm = false">Cancel
     </button>
   </form>
 </div>
 
-<h3 class="thin center-align">Stocks</h3>
 <ul ng-repeat="stock in portfolio.stocks">
   <li>{{ stock.name }}</li>
 </ul>
