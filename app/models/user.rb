@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 
   has_many :stocks
 
+  def daily
+    binding.pry
+  end
+
   def as_json(options = {})
     super(options.merge(include: [:stocks]))
   end

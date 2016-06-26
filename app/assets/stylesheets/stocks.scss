@@ -1,16 +1,8 @@
-@media screen and (max-width: 600px) {
-    .add-stock-circle-button {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 600px) {
-    .add-stock-button {
-        display: none;
-    }
-}
-
 .cancel-add-stock-button {
   margin-top: 10px;
   color: #009688;
+}
+
+.add-stock-form {
+  margin-top: -42px;
 }
