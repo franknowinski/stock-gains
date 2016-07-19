@@ -24,20 +24,11 @@ ActiveRecord::Schema.define(version: 20160626021158) do
   end
 
   create_table "stocks", force: :cascade do |t|
-    t.string   "name"
     t.string   "symbol"
-    t.decimal  "percent_change"
-    t.decimal  "ask"
-    t.decimal  "days_range"
-    t.decimal  "year_range"
-    t.decimal  "previous_close"
-    t.decimal  "earnings_share"
-    t.integer  "volume"
-    t.decimal  "oneyr_target_price"
     t.integer  "shares"
     t.integer  "user_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

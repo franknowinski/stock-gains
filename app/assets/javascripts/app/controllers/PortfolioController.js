@@ -22,11 +22,15 @@ function PortfolioController(Auth, StockResource, StockService){
 
   ctrl.addStock = function(){
     ctrl.error = '';
-    StockService.queryStock(this.stock.ticker, ctrl.user).then(function(stock){
+    StockService.queryStock(this.stock.symbol, ctrl.user).then(function(stock){
       if (typeof(stock) == "string"){
         clearForm(stock);
       } else {
-        StockResource.create({stock: formatStockObject(stock, ctrl.stock.shares)}, function(stock){
+        // StockResource.create({stock: formatStockObject(stock, ctrl.stock.shares)}, function(stock){
+        //   ctrl.stocks.push(stock), ctrl.stock = '', ctrl.displayForm = false;
+        // });
+        StockResource.create({stock: ctrl.stock}, function(stock){
+          debugger;
           ctrl.stocks.push(stock), ctrl.stock = '', ctrl.displayForm = false;
         });
       };

@@ -4,10 +4,10 @@ function StocksController($scope, StockService){
 
   ctrl.lookup = function(){
     ctrl.error = '';
-    StockService.queryStock(this.ticker).then(function(stock){
+    StockService.queryStock(this.symbol).then(function(stock){
       typeof(stock) == 'object' ? ctrl.stockData.push(stock) : ctrl.error = stock;
     });
-    ctrl.ticker = '';
+    ctrl.symbol = '';
   }
 };
 angular
