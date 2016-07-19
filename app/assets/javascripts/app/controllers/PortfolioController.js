@@ -1,4 +1,4 @@
-function PortfolioController(Auth, Stock, StockService){
+function PortfolioController(Auth, StockResource, StockService){
   var ctrl = this;
 
   function clearForm(error) {
@@ -26,7 +26,7 @@ function PortfolioController(Auth, Stock, StockService){
       if (typeof(stock) == "string"){
         clearForm(stock);
       } else {
-        Stock.create({stock: formatStockObject(stock, ctrl.stock.shares)}, function(stock){
+        StockResource.create({stock: formatStockObject(stock, ctrl.stock.shares)}, function(stock){
           ctrl.stocks.push(stock), ctrl.stock = '', ctrl.displayForm = false;
         });
       };

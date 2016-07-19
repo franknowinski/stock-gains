@@ -1,0 +1,16 @@
+<div class="row offset-l1">
+  <div ng-repeat="stock in portfolio.stocks">
+    <div class="col l4 m6 s12">
+      <div class="card">
+        <div class="card-content">
+          <h5 class="thin center-align">{{stock.name}}</h5>
+          <div class="divider container"></div><br>
+          <p class="thin">Asking Price: {{stock.ask}}</p>
+        </div>
+        <div class="card-action">
+          <a href="#">{{stock.previous_close}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

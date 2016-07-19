@@ -1,32 +1,35 @@
 <h3 class="center-align col l4 m6 s12 offset-l4 offset-m3 thin" ng-hide="portfolio.displayForm">Stock Portfolio</h3>
 <div class="divider container"></div><br>
 
+<!-- add stock button -->
 <div class="row">
   <button class="btn waves-effect waves-light col s8 col l6 offset-s2 offset-l3" type="submit" name="action" ng-click="portfolio.displayForm = true" ng-hide="portfolio.displayForm">Add Stock
   </button>
 </div>
 
-<!-- Add stock form -->
+<!-- add stock form -->
 <div class="row add-stock-form" ng-show="portfolio.displayForm"><br>
-  <div ng-include="'portfolio/add_stock_form.html'"></div>
+  <add-stock></add-stock>
 </div>
 
+<!-- display users stocks -->
+<stock></stock>
+<!--
 <div class="row offset-l1">
   <div ng-repeat="stock in portfolio.stocks">
-      <div class="col l4 m6 s12">
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <h5 class="thin col s10">{{stock.name}}</h5>
-               <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">remove</i></a>
-            </div>
-            </div>
-            <div class="card-action">
-              <a href="#">{{stock.previous_close}}</a>
-            </div>
+    <div class="col l4 m6 s12">
+      <div class="card">
+        <div class="card-content">
+          <div class="row">
+            <h5 class="thin col s10">{{stock.name}}</h5>
+            <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">remove</i></a>
           </div>
+          <p class="thin">Asking Price: {{stock.ask}}</p>
+        </div>
+        <div class="card-action">
+          <a href="#">{{stock.previous_close}}</a>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->

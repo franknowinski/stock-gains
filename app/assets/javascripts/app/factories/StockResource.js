@@ -1,4 +1,4 @@
-function Stock($resource){
+function StockResource($resource){
 
   return $resource('/api/v1/stocks', {user_id: '@userId'}, {
     // query: {method: 'GET', isArray: true},
@@ -10,4 +10,4 @@ function Stock($resource){
 
 angular
 .module('app')
-.factory('Stock', Stock);
+.factory('StockResource', StockResource);
