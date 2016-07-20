@@ -1,4 +1,4 @@
-function StocksController($scope, StockService){
+function StocksController(StockService){
   var ctrl = this;
   ctrl.stockData = [];
 
@@ -12,4 +12,4 @@ function StocksController($scope, StockService){
 };
 angular
   .module('app')
-  .controller('StocksController', StocksController);
+  .controller('StocksController', ['StockService', StocksController]);

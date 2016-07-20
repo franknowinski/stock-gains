@@ -26,4 +26,4 @@ function NavbarController($scope, $state, Auth){
 
 angular
   .module('app')
-  .controller('NavbarController', NavbarController);
+  .controller('NavbarController', ['$scope', '$state', 'Auth', NavbarController]);

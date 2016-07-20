@@ -38,4 +38,4 @@ function PortfolioController(Auth, StockResource, StockService){
 
 angular
   .module('app')
-  .controller('PortfolioController', PortfolioController);
+  .controller('PortfolioController', ['Auth', 'StockResource', 'StockService', PortfolioController]);
