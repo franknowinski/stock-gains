@@ -54185,7 +54185,6 @@ function StockResource($resource){
 
   return $resource('/api/v1/stocks', {user_id: '@userId'}, {
     // query: {method: 'GET', isArray: true},
-    // get: {method: 'GET', isArray: true},
     create: {method: 'POST', isArray: true},
     delete: {method: 'DELETE', isArray: true}
   });
@@ -54211,7 +54210,7 @@ angular
 function StockService($http) {
 
   function baseUrl(ticker) {
-    return 'http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22' + ticker + '%22%29&env=store://datatables.org/alltableswithkeys&format=json';
+    return "//query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + ticker + "%22%29&env=store://datatables.org/alltableswithkeys&format=json"
   };
 
   function validateNewStock(ownedStocks, symbol){
