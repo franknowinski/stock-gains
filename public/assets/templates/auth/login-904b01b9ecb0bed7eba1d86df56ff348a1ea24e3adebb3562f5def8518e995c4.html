@@ -1,0 +1,27 @@
+<h2 class="center-align thin">Login</h2>
+
+<div class="row">
+  <div ng-if="error">
+    <div class="center-align">
+      <h6 class="red-text text-red-darken-1 center-align">{{ error }}</h6>
+    </div>
+  </div>
+  <form class="col s12" ng-submit="login()">
+    <div class="row">
+      <div class="input-field col s12 l6 offset-l3">
+        <input id="email" type="email" class="validate" ng-model="user.email">
+        <label for="email">Email</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12 l6 offset-l3">
+        <input id="password" type="password" class="validate" ng-model="user.password">
+        <label for="password">Password</label>
+      </div>
+    </div>
+
+    <button class="btn waves-effect waves-light col s6 l4 offset-l4 offset-s3" type="submit" name="action">Submit
+    </button>
+  </form>
+</div>

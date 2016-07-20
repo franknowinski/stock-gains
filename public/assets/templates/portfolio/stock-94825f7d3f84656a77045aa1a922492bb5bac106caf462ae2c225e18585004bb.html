@@ -1,0 +1,26 @@
+<div class="row offset-l1">
+  <div ng-repeat="stock in portfolio.stocks" ng-init="showModal=false">
+    <div class="col l4 m6 s12">
+      <div class="card">
+        <div class="card-content">
+          <h5 class="center-align">{{stock.Name}}</h5>
+          <div class="divider container"></div><br>
+          <p>Asking Price: {{stock.Ask | currency}}</p>
+          <p>Percent Change: {{stock.PercentChange}}</p>
+          <p>Days Range: ${{stock.DaysRange}}</p>
+          <p>Previous Close: {{stock.PreviousClose | currency}}</p>
+        </div>
+        <div class="card-action row">
+          <p class="col s10">Todays net: $$$</p>
+          <button data-target="modal1" ng-click="showModal=true" class="btn-floating btn-tiny waves-effect waves-light red darken-3 modal-trigger"><i class="material-icons">remove</i></button>
+          <div ng-show="showModal">
+            <h5>Are you sure you want to delete {{ stock.Name}} from your portfolio?</h5>
+            <hr>
+            <a ng-click="portfolio.removeStock(stock)">Yes</a>
+            <a ng-click="showModal=false">No</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
