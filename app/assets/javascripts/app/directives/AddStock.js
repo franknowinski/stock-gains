@@ -1,4 +1,4 @@
-function addStock() {
+function AddStock() {
    return {
      templateUrl: 'portfolio/add_stock_form.html'
    };
@@ -6,4 +6,4 @@ function addStock() {
 
 angular
   .module('app')
-  .directive('addStock', addStock);
+  .directive('addStock', AddStock);

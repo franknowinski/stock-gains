@@ -3,3 +3,9 @@ $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 @import 'navbar';
 @import 'stocks';
+
+body {
+  // background-color: black;
+  // color: #76ff03;
+  color: #64dd17;
+}

@@ -6,22 +6,27 @@ function PortfolioController(Auth, StockResource, StockService){
   };
 
   function setStocks(stocks) {
-    StockService.getStocks(stocks).then(function(res){
-       ctrl.stocks = res.length == undefined ? [res] : res;
+    StockService.getStocks(stocks).then(function(stocks){
+       ctrl.stocks = stocks.length == undefined ? [stocks] : stocks;
     });
   };
 
   ctrl.addStock = function(){
     ctrl.error = '';
-    StockService.queryStock(this.stock.symbol, ctrl.user).then(function(stock){
+    StockService.queryStock(this.stock.symbol, ctrl.stocks).then(function(stock){
       if (typeof(stock) == "string"){
         clearForm(stock);
       } else {
         StockResource.create({stock: ctrl.stock}, function(stocks){
-          setStocks(stocks);
-          ctrl.stock = '', ctrl.displayForm = false;
+          setStocks(stocks), ctrl.stock = '', ctrl.displayForm = false;
         });
       };
+    });
+  };
+
+  ctrl.removeStock = function(stock){
+    StockResource.delete({symbol: stock.symbol}, function(stocks){
+      stocks.length > 0 ? setStocks(stocks) : ctrl.stocks = '';
     });
   };
 

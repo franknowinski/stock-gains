@@ -26,6 +26,7 @@ gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 gem 'materialize-sass'
 gem 'devise'
+gem 'rails_12factor', group: :production
 
 source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"

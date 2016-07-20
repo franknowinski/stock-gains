@@ -4,7 +4,7 @@ function StockResource($resource){
     // query: {method: 'GET', isArray: true},
     // get: {method: 'GET', isArray: true},
     create: {method: 'POST', isArray: true},
-    delete: { method: 'DELETE' }
+    delete: {method: 'DELETE', isArray: true}
   });
 }
 

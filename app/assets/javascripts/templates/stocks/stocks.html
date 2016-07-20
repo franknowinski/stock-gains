@@ -33,12 +33,12 @@
       <tbody>
         <tr class="teal-text" ng-repeat="stock in stocks.stockData">
           <td>{{stock.symbol | uppercase}}</td>
-          <td>${{stock.Ask}}</td>
+          <td>{{stock.Ask | currency}}</td>
           <td>{{stock.PercentChange}}</td>
           <td>${{stock.DaysRange}}</td>
           <td>${{stock.YearRange}}</td>
-          <td>${{stock.PreviousClose}}</td>
-          <td>${{stock.OneyrTargetPrice}}</td>
+          <td>{{stock.PreviousClose | currency}}</td>
+          <td>{{stock.OneyrTargetPrice | currency}}</td>
           <td>{{stock.EarningsShare}}</td>
           <td>{{stock.Volume | number}}</td>
         </tr>

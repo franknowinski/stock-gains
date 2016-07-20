@@ -4,9 +4,9 @@ function StockService($http) {
     return 'http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22' + ticker + '%22%29&env=store://datatables.org/alltableswithkeys&format=json';
   };
 
-  function validateNewStock(user, symbol){
-    if (user != undefined) {
-      return user.stocks.map(function(s){return s.symbol;}).includes(symbol);
+  function validateNewStock(ownedStocks, symbol){
+    if (ownedStocks != undefined && ownedStocks != "") {
+      return ownedStocks.map(function(s){return s.symbol;}).includes(symbol);
     };
   };
 
@@ -20,12 +20,12 @@ function StockService($http) {
     });
   };
 
-  this.queryStock = function(ticker, user) {
+  this.queryStock = function(ticker, ownedStocks) {
     return $http.get(baseUrl(ticker)).then(function(res){
       var quote = res.data.query.results.quote;
       if (quote.Ask == null) {
         return 'Unable to find stock data for that ticker.'
-      } else if (validateNewStock(user, quote.symbol)) {
+      } else if (validateNewStock(ownedStocks, quote.symbol)) {
         return quote.Name + ' is already apart of your portfolio.';
       } else {
         return quote;

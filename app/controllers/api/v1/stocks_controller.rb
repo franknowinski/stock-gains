@@ -1,5 +1,6 @@
 class Api::V1::StocksController < ApplicationController
   before_action :create_stock, only: [:create]
+  before_action :destroy_stock, only: [:destroy]
   respond_to :json
 
   def index
@@ -7,6 +8,10 @@ class Api::V1::StocksController < ApplicationController
   end
 
   def create
+    render json: current_user.stocks
+  end
+
+  def destroy
     render json: current_user.stocks
   end
 
@@ -18,5 +23,9 @@ class Api::V1::StocksController < ApplicationController
 
   def create_stock
     current_user.stocks.create(stock_params)
+  end
+
+  def destroy_stock
+    current_user.stocks.where(symbol: params[:symbol]).destroy_all
   end
 end
