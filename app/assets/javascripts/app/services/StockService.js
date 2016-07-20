@@ -36,4 +36,4 @@ function StockService($http) {
 
 angular
   .module('app')
-  .service('StockService', StockService);
+  .service('StockService', ['$http', StockService]);
