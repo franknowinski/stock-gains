@@ -1,7 +1,7 @@
 function StockService($http) {
 
-  function formatURL(ticker) {
-    return 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22' + ticker + '%22)&env=store://datatables.org/alltableswithkeys&format=json';
+  function baseUrl(ticker) {
+    return 'http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22' + ticker + '%22%29&env=store://datatables.org/alltableswithkeys&format=json';
   };
 
   function validateNewStock(user, symbol){
@@ -10,8 +10,18 @@ function StockService($http) {
     };
   };
 
+  function getTickers(stocks){
+    return stocks.map(function(s){return s.symbol;}).join('+');
+  };
+
+  this.getStocks = function(stocks){
+    return $http.get(baseUrl(getTickers(stocks))).then(function(res){
+      return res.data.query.results.quote;
+    });
+  };
+
   this.queryStock = function(ticker, user) {
-    return $http.get(formatURL(ticker)).then(function(res){
+    return $http.get(baseUrl(ticker)).then(function(res){
       var quote = res.data.query.results.quote;
       if (quote.Ask == null) {
         return 'Unable to find stock data for that ticker.'

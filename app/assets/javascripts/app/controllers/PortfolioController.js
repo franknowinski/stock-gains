@@ -5,19 +5,10 @@ function PortfolioController(Auth, StockResource, StockService){
     ctrl.error = error, ctrl.stock = '';
   };
 
-  function formatStockObject(stock, shares){
-    stockObject = {};
-    for (var key in stock){
-      words = key.match(/[A-Z][a-z]+/g);
-      if (words != null) {
-        formattedKey = words.map(function(word){
-           return word.toLowerCase();
-         }).join('_');
-        stockObject[formattedKey] = stock[key];
-      };
-    };
-    stockObject["shares"] = shares;
-    return stockObject;
+  function setStocks(stocks) {
+    StockService.getStocks(stocks).then(function(res){
+       ctrl.stocks = res.length == undefined ? [res] : res;
+    });
   };
 
   ctrl.addStock = function(){
@@ -26,12 +17,9 @@ function PortfolioController(Auth, StockResource, StockService){
       if (typeof(stock) == "string"){
         clearForm(stock);
       } else {
-        // StockResource.create({stock: formatStockObject(stock, ctrl.stock.shares)}, function(stock){
-        //   ctrl.stocks.push(stock), ctrl.stock = '', ctrl.displayForm = false;
-        // });
-        StockResource.create({stock: ctrl.stock}, function(stock){
-          debugger;
-          ctrl.stocks.push(stock), ctrl.stock = '', ctrl.displayForm = false;
+        StockResource.create({stock: ctrl.stock}, function(stocks){
+          setStocks(stocks);
+          ctrl.stock = '', ctrl.displayForm = false;
         });
       };
     });
@@ -39,7 +27,7 @@ function PortfolioController(Auth, StockResource, StockService){
 
   Auth.currentUser().then(function(user){
     ctrl.user = user;
-    ctrl.stocks = user.stocks;
+    setStocks(user.stocks);
   });
 };
 
