@@ -14,8 +14,8 @@ var AddStock = {
         if (typeof(stock) == 'string'){
           clearForm(stock);
         } else {
-          StockResource.create({stock: ctrl.stock}, function(stocks){
-            $scope.$emit('updateStocks', stocks), ctrl.stock = '';
+          StockResource.create({stock: ctrl.stock}, function(stock){
+            $scope.$emit('addStock', stock), ctrl.stock = '';
           });
         };
       });

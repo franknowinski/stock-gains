@@ -1,14 +1,29 @@
 function PortfolioController($scope, Auth, StockService){
   var ctrl = this;
+  ctrl.stocks = [];
+
+  function getTickers(stocks) {
+    return stocks.map(function(s){return s.symbol;}).join('+');
+  };
 
   function setStocks(stocks) {
-    StockService.getStocks(stocks).then(function(stocks){
+    StockService.getStocks(getTickers(stocks)).then(function(stocks){
        ctrl.stocks = stocks.length == undefined ? [stocks] : stocks;
     });
   };
 
-  $scope.$on('updateStocks', function(emitEvent, stocks) {
-    ctrl.stocks = setStocks(stocks), ctrl.displayForm = false;
+  $scope.$on('addStock', function(e, stock) {
+    ctrl.displayForm = false;
+    StockService.getStocks(stock.symbol).then(function(stock){
+      ctrl.stocks.push(stock);
+    })
+  });
+
+  $scope.$on('removeStock', function(e, stock) {
+    ctrl.displayForm = false;
+    for(var i = 0; i < ctrl.stocks.length; i++){
+      if (ctrl.stocks[i].symbol == stock[0].symbol) { ctrl.stocks.splice(i, 1); }
+    };
   });
 
   Auth.currentUser().then(function(user){

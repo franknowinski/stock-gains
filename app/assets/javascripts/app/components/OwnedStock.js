@@ -8,8 +8,8 @@ var OwnedStock = {
     ctrl.$inject = ['$scope', 'StockResource'];
 
     ctrl.deleteStock = function(deleteStock) {
-      StockResource.delete({symbol: deleteStock.symbol}, function(stocks){
-        $scope.$emit('updateStocks', stocks);
+      StockResource.delete({symbol: deleteStock.symbol}, function(stock){
+        $scope.$emit('removeStock', stock);
       });
     }
   },

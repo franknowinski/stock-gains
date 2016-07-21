@@ -1,6 +1,4 @@
 class Api::V1::StocksController < ApplicationController
-  before_action :create_stock, only: [:create]
-  before_action :destroy_stock, only: [:destroy]
   respond_to :json
 
   def index
@@ -12,24 +10,16 @@ class Api::V1::StocksController < ApplicationController
   end
 
   def create
-    render json: current_user.stocks
+    render json: current_user.stocks.create(stock_params)
   end
 
   def destroy
-    render json: current_user.stocks
+    render json: current_user.stocks.where(symbol: params[:symbol]).destroy_all
   end
 
   private
 
   def stock_params
     params.require(:stock).permit(:symbol, :shares)
-  end
-
-  def create_stock
-    current_user.stocks.create(stock_params)
-  end
-
-  def destroy_stock
-    current_user.stocks.where(symbol: params[:symbol]).destroy_all
   end
 end
