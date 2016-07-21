@@ -7,6 +7,10 @@ class Api::V1::StocksController < ApplicationController
     render json: current_user.stocks
   end
 
+  def show
+    binding.pry
+  end
+
   def create
     render json: current_user.stocks
   end

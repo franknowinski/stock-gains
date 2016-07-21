@@ -13,5 +13,9 @@
   <add-stock></add-stock>
 </div>
 
-<!-- display users stocks -->
-<stock></stock>
+<!-- display owned stocks -->
+<div class="row offset-l1">
+  <div ng-repeat="stock in portfolio.stocks" ng-init="showModal=false">
+    <owned-stock stock="stock"></owned-stock>
+  </div>
+</div>
