@@ -11,7 +11,7 @@ var OwnedStock = {
       StockResource.delete({symbol: deleteStock.symbol}, function(stock){
         $scope.$emit('removeStock', stock);
       });
-    }
+    };
   },
   controllerAs: 'portfolio'
 };

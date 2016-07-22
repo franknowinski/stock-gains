@@ -3,6 +3,7 @@ $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 @import 'navbar';
 @import 'stocks';
+@import 'remove_stock';
 
 body {
   background-color: black;
