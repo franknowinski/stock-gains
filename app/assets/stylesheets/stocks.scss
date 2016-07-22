@@ -1,8 +1,9 @@
 .cancel-add-stock-button {
-  margin-top: 10px;
   color: #009688;
 }
 
-.add-stock-form {
-  margin-top: -42px;
+@media only screen and (max-width : 585px) {
+  .cancel-add-stock-button {
+    margin-top: 10px;
+  }
 }
