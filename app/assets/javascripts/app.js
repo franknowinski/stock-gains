@@ -35,7 +35,14 @@ angular
       .state('home.portfolio', {
         url: 'portfolio',
         templateUrl: 'portfolio/portfolio.html',
-        controller: 'PortfolioController as portfolio'
+        controller: 'PortfolioController as portfolio',
+        resolve: {
+          stockTickers: function(StockService){
+            return StockService.usersStocks().then(function(stocks){
+              return stocks.data.map(function(s){return s.symbol;}).join('+');
+            });
+          }
+        }
       });
 
       $urlRouterProvider.otherwise('/');

@@ -2,17 +2,16 @@
 <h3 class="center-align col l4 m6 s12 offset-l4 offset-m3 thin">Stock Portfolio</h3>
 <div class="divider container"></div><br>
 
-<!-- add stock button -->
+<!-- add stock form -->
 <div class="row">
-  <a class="waves-effect waves-light btn modal-trigger col s8 col l6 offset-s2 offset-l3" href="#add-stock-modal" ng-click="portfolio.displayForm = true">Add Stock</a>
+  <a class="waves-effect waves-light btn modal-trigger col s8 col l6 offset-s2 offset-l3" href="#add-stock-modal">Add Stock</a>
 </div>
 
-<!-- add stock form -->
 <add-stock></add-stock>
 
 <!-- owned stocks -->
 <div class="row offset-l1">
-  <div ng-repeat="stock in portfolio.stocks" ng-init="showModal=false">
+  <div ng-repeat="stock in portfolio.stocks">
     <owned-stock stock="stock"></owned-stock>
   </div>
 </div>

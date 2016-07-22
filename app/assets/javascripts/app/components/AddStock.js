@@ -15,7 +15,8 @@ var AddStock = {
           clearForm(stock);
         } else {
           StockResource.create({stock: ctrl.stock}, function(stock){
-            $scope.$emit('addStock', stock), ctrl.stock = '', $('#add-stock-modal').closeModal();
+            $scope.$emit('addStock', stock), ctrl.stock = '';
+             $('#add-stock-modal').closeModal();
           });
         };
       });
