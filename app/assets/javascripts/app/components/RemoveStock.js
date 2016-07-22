@@ -11,6 +11,10 @@ var RemoveStock = {
       StockResource.delete({symbol: deleteStock.symbol}, function(stock){
         $scope.$emit('removeStock', stock);
       });
+    };
+
+    ctrl.showStock = function() {
+      $scope.$emit('displayStock');
     }
   },
   controllerAs: 'portfolio'

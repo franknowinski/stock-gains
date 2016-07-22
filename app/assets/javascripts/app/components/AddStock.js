@@ -8,6 +8,7 @@ var AddStock = {
       ctrl.error = error, ctrl.stock = '';
     };
 
+
     ctrl.addStock = function(){
       ctrl.error = '';
       StockService.queryStock(this.stock.symbol, StockResource.query()).then(function(stock){
@@ -15,12 +16,18 @@ var AddStock = {
           clearForm(stock);
         } else {
           StockResource.create({stock: ctrl.stock}, function(stock){
-            $scope.$emit('addStock', stock), ctrl.stock = '';
-             $('#add-stock-modal').closeModal();
+            $scope.$emit('addStock', stock), ctrl.stock = ''; $('#add-stock-modal').closeModal();
           });
         };
       });
     };
+
+    ctrl.toggleModal = function() {
+      $(function () {
+        $('.modal-trigger').leanModal();
+      });
+    };
+    ctrl.toggleModal();
   },
   controllerAs: 'portfolio'
 };

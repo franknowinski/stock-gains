@@ -20,13 +20,6 @@ function PortfolioController($scope, Auth, stockTickers, StockService, StockReso
   Auth.currentUser().then(function(user){
     ctrl.user = user;
   });
-
-  ctrl.toggleModal = function() {
-    $(function () {
-      $('.modal-trigger').leanModal();
-    });
-  }
-  ctrl.toggleModal();
 };
 
 angular
