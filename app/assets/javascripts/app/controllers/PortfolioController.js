@@ -2,6 +2,14 @@ function PortfolioController($scope, Auth, StockService){
   var ctrl = this;
   ctrl.stocks = [];
 
+  ctrl.work = function () {
+    $(function () {
+      $('.modal-trigger').leanModal();
+    });
+  };
+
+  ctrl.work();
+
   function getTickers(stocks) {
     return stocks.map(function(s){return s.symbol;}).join('+');
   };

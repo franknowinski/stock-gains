@@ -4,6 +4,7 @@ function NavbarController($scope, $state, Auth){
   $scope.logout = function(){
     Auth.logout().then(function(user){
       Materialize.toast('Goodbye!', 2000);
+      $state.go('home');
     });
   };
 
