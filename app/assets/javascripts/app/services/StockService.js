@@ -10,6 +10,10 @@ function StockService($http) {
     };
   };
 
+  this.usersStocks = function() {
+    return $http.get('/api/v1/stocks');
+  };
+
   this.getStocks = function(ticker) {
     return $http.get(baseUrl(ticker)).then(function(res){
       return res.data.query.results.quote;

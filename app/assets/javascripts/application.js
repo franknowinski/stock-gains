@@ -7,8 +7,9 @@
 //= require materialize-sprockets
 //= require_tree .
 
-$( document ).ready(function(){
+$(document).ready(function(){
   $(".button-collapse").sideNav();
+<<<<<<< HEAD
 
   // $('.add-stock-button').click(function(e){
   //   $(function () {
@@ -16,4 +17,6 @@ $( document ).ready(function(){
   //   });
   // })
   // $('.modal-trigger').leanModal();
+=======
+>>>>>>> e02e2bd94c596ef5c6a1e4834b75623c05c2cf3c
 });

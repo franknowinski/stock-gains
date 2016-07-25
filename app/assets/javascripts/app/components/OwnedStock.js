@@ -3,15 +3,13 @@ var OwnedStock = {
     stock: '='
   },
   templateUrl: 'portfolio/stock.html',
-  controller: function($scope, StockResource){
+  controller: function($scope){
     var ctrl = this;
-    ctrl.$inject = ['$scope', 'StockResource'];
+    ctrl.$inject = ['$scope'];
 
-    ctrl.deleteStock = function(deleteStock) {
-      StockResource.delete({symbol: deleteStock.symbol}, function(stock){
-        $scope.$emit('removeStock', stock);
-      });
-    };
+    $scope.$on('displayStock', function() {
+      ctrl.showContent = true;
+    });
   },
   controllerAs: 'portfolio'
 };

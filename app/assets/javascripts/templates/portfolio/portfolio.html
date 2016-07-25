@@ -2,6 +2,7 @@
 <h3 class="center-align col l4 m6 s12 offset-l4 offset-m3 thin">Stock Portfolio</h3>
 <div class="divider container"></div><br>
 
+<<<<<<< HEAD
 
 <!-- Modal Trigger -->
 <!-- add stock button -->
@@ -10,12 +11,14 @@
 
 </div>
 
+=======
+>>>>>>> e02e2bd94c596ef5c6a1e4834b75623c05c2cf3c
 <!-- add stock form -->
 <add-stock></add-stock>
 
 <!-- owned stocks -->
 <div class="row offset-l1">
-  <div ng-repeat="stock in portfolio.stocks" ng-init="showModal=false">
+  <div ng-repeat="stock in portfolio.stocks">
     <owned-stock stock="stock"></owned-stock>
   </div>
 </div>

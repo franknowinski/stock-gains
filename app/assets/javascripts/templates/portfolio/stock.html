@@ -10,20 +10,11 @@
     </div>
     <div class="card-action row">
       <p class="col s10">Todays net: $$$</p>
-      <button ng-click="portfolio.showContent = false" class="btn-floating btn-tiny waves-effect waves-light red darken-3"><i class="material-icons">remove</i></button>
+      <button class="btn-floating btn-tiny waves-effect waves-light red darken-3" ng-click="portfolio.showContent = false"><i class="material-icons">remove</i></button>
     </div>
   </div>
+
   <div class="card" ng-hide="portfolio.showContent">
-    <div class="remove-stock-prompt card-content"><br>
-      <h5 class="center-align">Are you sure you want to remove {{stock.Name}} from your portfolio?</h5>
-    </div>
-    <div class="card-action row">
-      <div class="col s6">
-        <a class="waves-effect waves-light btn col s10" ng-click="portfolio.deleteStock(portfolio.stock)">Yes</a>
-      </div>
-      <div class="col s6">
-        <a class="waves-effect waves-light btn col s10" ng-click="portfolio.showContent = true">No</a>
-      </div>
-    </div>
+    <remove-stock stock="portfolio.stock"></remove-stock>
   </div>
 </div>
