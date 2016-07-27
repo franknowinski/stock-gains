@@ -11,17 +11,17 @@
       <stock-table stock="portfolio.stock"></stock-table>
 
       <div class="row daily-return">
-        <h5 class="col s6 offset-s1 center-align">Daily Return:</h5>
-        <h5 class="col s4 left-align" >{{portfolio.stock.dailyReturn | currency}}</h5>
+        <h5 class="col s6 offset-s1">Daily Return:</h5>
+        <h5 class="col s5 left-align" >{{portfolio.stock.dailyReturn | currency}}</h5>
       </div>
     </div>
 
-    <div class=" row">
+    <div class="row">
       <div class="col s6 center-align">
-        <button class="waves-effect waves-light btn" ng-click="portfolio.editStockForm = true; portfolio.showContent = false"><i class="material-icons">edit</i></button>
+        <button class="waves-effect waves-light btn stock-card-button" ng-click="portfolio.editStockForm = true; portfolio.showContent = false"><i class="material-icons">edit</i></button>
       </div>
       <div class="col s6 center-align">
-        <button class="waves-effect waves-light btn" ng-click="portfolio.removeStock = true; portfolio.showContent = false"><i class="material-icons">delete</i></button>
+        <button class="waves-effect waves-light btn stock-card-button" ng-click="portfolio.removeStock = true; portfolio.showContent = false"><i class="material-icons">delete</i></button>
       </div>
     </div>
   </div>

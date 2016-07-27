@@ -22,11 +22,15 @@
 
 .card {
   .card-content {
+    height: 315px;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 0px;
   }
-   button {
+   .stock-card-button, .remove-button {
     width: 100%;
+    margin: 15px 0px;
+  }
+  .cancel-edit-button {
     margin: 15px 0px;
   }
 }

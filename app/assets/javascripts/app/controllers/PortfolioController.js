@@ -19,7 +19,7 @@ function PortfolioController($scope, Auth, usersStocks, StockService, StockResou
 
   $scope.$on('addStock', function(e, savedStock) {
     StockService.getStockData(savedStock.symbol).then(function(stock) {
-      stock.shares = savedStock.shares;
+      stock.id = savedStock.id, stock.shares = savedStock.shares;
       ctrl.stocks == undefined ? ctrl.stocks = [stock] : ctrl.stocks.push(stock);
     })
   });
