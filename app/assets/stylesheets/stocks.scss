@@ -7,3 +7,31 @@
     margin-top: 10px;
   }
 }
+
+.stock-table-column {
+  border-right: 1px solid #e0e0e0;
+}
+
+.stock-data-row {
+  margin-bottom: 3px;
+  .row {
+    padding: 0px;
+    margin-bottom: 1px;
+  }
+}
+
+.card {
+  .card-content {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0px;
+  }
+   button {
+    width: 100%;
+    margin: 15px 0px;
+  }
+}
+
+.daily-return {
+  margin-top: -15px;
+  margin-bottom: 14px;
+}

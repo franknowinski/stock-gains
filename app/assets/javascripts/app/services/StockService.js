@@ -1,5 +1,4 @@
-function StockService($http) {
-
+function StockService($http, $filter) {
   function baseUrl(ticker) {
     return "//query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + ticker + "%22%29&env=store://datatables.org/alltableswithkeys&format=json"
   };
@@ -10,12 +9,16 @@ function StockService($http) {
     };
   };
 
-  this.usersStocks = function() {
+  this.getUsersStocks = function() {
     return $http.get('/api/v1/stocks');
   };
 
-  this.getStocks = function(ticker) {
-    return $http.get(baseUrl(ticker)).then(function(res){
+  this.updateStock = function(stock) {
+    return $http.put('/api/v1/stocks/' + stock.id, {stock: stock});
+  };
+
+  this.getStockData = function(stocks) {
+    return $http.get(baseUrl(stocks)).then(function(res){
       return res.data.query.results.quote;
     });
   };
@@ -36,4 +39,4 @@ function StockService($http) {
 
 angular
   .module('app')
-  .service('StockService', ['$http', StockService]);
+  .service('StockService', ['$http', '$filter', StockService]);

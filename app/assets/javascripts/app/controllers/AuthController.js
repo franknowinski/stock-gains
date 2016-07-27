@@ -1,4 +1,5 @@
 function AuthController($scope, $state, Auth){
+
   function welcomeMessage(){
     $state.go('home');
     return Materialize.toast('Welcome!', 2000);

@@ -8,7 +8,7 @@ var OwnedStock = {
     ctrl.$inject = ['$scope'];
 
     $scope.$on('displayStock', function() {
-      ctrl.showContent = true;
+      ctrl.showContent = true, ctrl.removeStock = false, ctrl.editStock = false;
     });
   },
   controllerAs: 'portfolio'

@@ -15,7 +15,7 @@ var RemoveStock = {
 
     ctrl.showStock = function() {
       $scope.$emit('displayStock');
-    }
+    };
   },
   controllerAs: 'portfolio'
 };

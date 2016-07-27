@@ -1,0 +1,23 @@
+<div class="row stock-data-row">
+  <div class="row col l5 s5">
+    <p class="col l6 s6">Price:</p>
+    <p class="col l6 s6 right-align">{{portfolio.stock.Ask | currency}}</p>
+  </div>
+
+  <div class="row col l7 s7">
+    <p class="col l8 s9">Previous Close:</p>
+    <p class="col l4 s3 right-align">{{portfolio.stock.PreviousClose | currency}}</p>
+  </div>
+</div>
+
+<div class="row stock-data-row">
+  <div class="row col l5 s5">
+    <p class="col l6 s6">Shares:</p>
+    <p class="col l6 s6 right-align">{{portfolio.stock.shares}}</p>
+  </div>
+
+  <div class="row col l7 s7">
+    <p class="col l8 s9">Percent Change:</p>
+    <p class="col l4 s3 right-align">{{portfolio.stock.PercentChange}}</p>
+  </div>
+</div>

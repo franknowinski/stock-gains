@@ -37,10 +37,8 @@ angular
         templateUrl: 'portfolio/portfolio.html',
         controller: 'PortfolioController as portfolio',
         resolve: {
-          stockTickers: function(StockService){
-            return StockService.usersStocks().then(function(stocks){
-              return stocks.data.map(function(s){return s.symbol;}).join('+');
-            });
+          usersStocks: function(StockService){
+            return StockService.getUsersStocks();
           }
         }
       });

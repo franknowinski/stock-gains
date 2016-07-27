@@ -10,6 +10,8 @@ gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 gem 'materialize-sass'
 gem 'devise'
+gem "angularjs-rails"
+gem "jasmine", github: "pivotal/jasmine-gem"
 gem 'rails_12factor', group: :production
 
 source "https://rails-assets.org" do

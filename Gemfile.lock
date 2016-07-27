@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/pivotal/jasmine-gem.git
+  revision: 93e2d514371af4213b4420ba71c69852f6931191
+  specs:
+    jasmine (2.4.0)
+      jasmine-core (~> 2.4)
+      phantomjs
+      rack (>= 1.2.1)
+      rake
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -43,6 +53,7 @@ GEM
       tilt
     angular_rails_csrf (1.0.4)
       rails (>= 3, < 5)
+    angularjs-rails (1.5.6)
     arel (6.0.3)
     awesome_print (1.6.1)
     bcrypt (3.1.11)
@@ -65,6 +76,7 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
+    jasmine-core (2.4.1)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -86,6 +98,7 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
     pg (0.18.4)
+    phantomjs (2.1.1.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -173,8 +186,10 @@ PLATFORMS
 DEPENDENCIES
   angular-rails-templates
   angular_rails_csrf
+  angularjs-rails
   awesome_print
   devise
+  jasmine!
   jbuilder (~> 2.0)
   materialize-sass
   pg (~> 0.15)
