@@ -9,16 +9,12 @@ var EditStock = {
 
     ctrl.editStock = function(stock) {
       StockService.updateStock(stock).then(function(updatedStock){
-        debugger;
-        ctrl.stock.currentBalance = updatedStock.data.shares * ctrl.stock.Ask;
-        ctrl.stock.previousBalance = updatedStock.data.shares * ctrl.stock.PreviousClose;
+        // After the stock market closes for the day
+        ctrl.stock.currentBalance = updatedStock.data.shares * ctrl.stock.LastTradePriceOnly;
+        ctrl.stock.previousBalance = updatedStock.data.shares * ctrl.stock.previousClose;
         ctrl.stock.dailyReturn = ctrl.stock.currentBalance - ctrl.stock.previousBalance;
-        $scope.$emit('displayStock');
       })
-      // .then(function(res){
-        ctrl.showContent = true;
-        ctrl.editStock = false;
-      // })
+      $scope.$emit('displayStock');
     };
 
     ctrl.showStock = function() {

@@ -14,11 +14,11 @@ var StockTable = {
       return ctrl.stock.shares * s[property];
     };
 
-    ctrl.stock.currentBalance = calculateBalance(ctrl.stock, 'Ask');
-
-    StockHistoryService.getPreviousDayStock(this.stock.symbol).then(function(s){
-      var day = ctrl.isToday ? s.previousDay : s.today
-      ctrl.stock.previousBalance = calculateBalance(day, 'Close');
+    StockHistoryService.getPreviousDayStock(this.stock.symbol).then(function(quotes){
+      ctrl.stock.Ask = quotes.today.Close;
+      ctrl.stock.previousClose = quotes.previousDay.Close;
+      ctrl.stock.currentBalance = calculateBalance(quotes.today, 'Close');
+      ctrl.stock.previousBalance = calculateBalance(quotes.previousDay, 'Close');
       ctrl.stock.dailyReturn = ctrl.stock.currentBalance - ctrl.stock.previousBalance;
     });
   },
