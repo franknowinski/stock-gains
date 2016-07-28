@@ -14,7 +14,7 @@ function PortfolioController($scope, Auth, usersStocks, StockService, StockResou
   };
 
   StockService.getStockData(stockTickers(usersStocks.data)).then(function(stocks) {
-    assignSharesAndId(stocks);
+    assignSharesAndId(stocks.length == undefined ? [stocks] : stocks);
   });
 
   $scope.$on('addStock', function(e, savedStock) {

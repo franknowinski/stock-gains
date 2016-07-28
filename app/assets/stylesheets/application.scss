@@ -4,7 +4,9 @@ $primary-color: color("blue", "lighten-2") !default;
 @import 'navbar';
 @import 'stocks';
 @import 'remove_stock';
+@import 'inputs';
 
 body {
   // background-image: url("http://il8.picdn.net/shutterstock/videos/1355794/thumb/1.jpg");
+  // color: white;
 }

@@ -1,15 +1,12 @@
-<div class="card-content"><br>
-  <h5 class="center-align">Are you sure you want to remove {{portfolio.stock.Name}} from your portfolio?</h5>
-</div>
-<div class="row">
-  <div class="col s6 center-align">
-    <button class="waves-effect waves-light btn remove-button" ng-click="portfolio.deleteStock(portfolio.stock)">Yes</button>
-  </div>
-  <div class="col s6 center-align">
-    <button class="waves-effect waves-light btn remove-button" ng-click="portfolio.showStock()">No</button>
-  </div>
+<div class="card-content"><br><br><br>
+  <h5 class="center-align remove-prompt">Are you sure you want to remove <strong>{{portfolio.stock.Name}}</strong> from your portfolio?</h5>
 </div>
 
-<!-- <div class="col s6 center-align">
-  <button class="waves-effect waves-light btn stock-card-button" ng-click="portfolio.removeStock = true; portfolio.showContent = false"><i class="material-icons">delete</i></button>
-</div> -->
+<div class="row">
+  <div class="col s6 center-align">
+    <button class="waves-effect waves-light btn blue darken-1 remove-button" ng-click="portfolio.deleteStock(portfolio.stock)">Yes</button>
+  </div>
+  <div class="col s6 center-align">
+    <button class="waves-effect waves-light btn blue darken-1 remove-button" ng-click="portfolio.showStock()">No</button>
+  </div>
+</div>

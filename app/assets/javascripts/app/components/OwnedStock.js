@@ -6,7 +6,7 @@ var OwnedStock = {
   controller: function($scope){
     var ctrl = this;
     ctrl.$inject = ['$scope'];
-
+    
     $scope.$on('displayStock', function() {
       ctrl.showContent = true, ctrl.removeStock = false, ctrl.editStockForm = false;
     });

@@ -8,12 +8,11 @@ var EditStock = {
     ctrl.$inject = ['$scope', 'StockService'];
 
     ctrl.editStock = function(stock) {
-      StockService.updateStock(stock).then(function(updatedStock){
-        // After the stock market closes for the day
-        ctrl.stock.currentBalance = updatedStock.data.shares * ctrl.stock.LastTradePriceOnly;
-        ctrl.stock.previousBalance = updatedStock.data.shares * ctrl.stock.previousClose;
+      StockService.updateStock(stock).then(function(updatedStock) {
+        ctrl.stock.currentBalance = updatedStock.data.shares * ctrl.stock.Ask;
+        ctrl.stock.previousBalance = updatedStock.data.shares * ctrl.stock.previousDay.Close;
         ctrl.stock.dailyReturn = ctrl.stock.currentBalance - ctrl.stock.previousBalance;
-      })
+      });
       $scope.$emit('displayStock');
     };
 
