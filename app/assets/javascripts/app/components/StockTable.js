@@ -7,28 +7,33 @@ var StockTable = {
     var ctrl = this;
     ctrl.$inject = ['$scope', '$filter', 'StockHistoryService'];
 
-    function calculateBalance(s, property) {
-      return ctrl.stock.shares * s[property];
-    };
-
     function formatDate(date) {
       return $filter('date')(date,'yyyy-MM-dd');
     };
 
-    StockHistoryService.getPreviousDayStock(this.stock.symbol).then(function(quotes){
-      // var today = new Date().setHours(0,0,0,0);
-      var lastTradeDate = Date.parse(ctrl.stock.LastTradeDate);
-      // ctrl.isToday = lastTradeDate == today ? true : false;
+    function calculateBalance(s, property) {
+      return ctrl.stock.shares * s[property];
+    };
 
-      if (formatDate(lastTradeDate) != quotes.today.Date) {
-        ctrl.stock.previousDay = quotes.today;
-      } else {
+    function assignBalance(stock) {
+      ctrl.stock.currentBalance = calculateBalance(stock, 'Ask');
+      ctrl.stock.previousBalance = calculateBalance(stock.previousDay, 'Close');
+      ctrl.stock.dailyReturn = ctrl.stock.currentBalance - ctrl.stock.previousBalance;
+    };
+
+    function assignPreviousDay(quotes) {
+      var lastTradeDate = Date.parse(ctrl.stock.LastTradeDate);
+      if (formatDate(lastTradeDate) == quotes.today.Date) {
         ctrl.stock.previousDay = quotes.previousDay
         ctrl.stock.Ask = quotes.today.Close;
+      } else {
+        ctrl.stock.previousDay = quotes.today;
       }
-      ctrl.stock.currentBalance = calculateBalance(ctrl.stock, 'Ask');
-      ctrl.stock.previousBalance = calculateBalance(ctrl.stock.previousDay, 'Close');
-      ctrl.stock.dailyReturn = ctrl.stock.currentBalance - ctrl.stock.previousBalance;
+    };
+
+    StockHistoryService.getPreviousDayStock(this.stock.symbol).then(function(quotes){
+      assignPreviousDay(quotes);
+      assignBalance(ctrl.stock);
     });
   },
   controllerAs: 'portfolio'

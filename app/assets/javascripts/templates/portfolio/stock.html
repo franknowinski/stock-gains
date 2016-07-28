@@ -10,12 +10,14 @@
       <!-- display stock table  -->
       <stock-table stock="portfolio.stock"></stock-table>
 
+      <!-- daily return -->
       <div class="row daily-return">
         <h5 class="col s6 offset-s1">Daily Return:</h5>
         <h5 class="col s5 left-align" ng-class="{'green-text darken-3': portfolio.stock.Change > 0, 'red-text darken-4': portfolio.stock.Change < 0}">{{portfolio.stock.dailyReturn | currency}}</h5>
       </div>
     </div>
 
+    <!-- footer buttons -->
     <div class="row card-border">
       <div class="col s6 center-align">
         <button class="waves-effect waves-light btn blue darken-1 stock-card-button" ng-click="portfolio.editStockForm = true; portfolio.showContent = false"><i class="material-icons">edit</i></button>
@@ -27,10 +29,12 @@
 
   </div>
 
+  <!-- edit stock form -->
   <div class="card" ng-show="portfolio.editStockForm">
     <edit-stock stock="portfolio.stock"></edit-stock>
   </div>
 
+  <!-- remove stock form -->
   <div class="card" ng-show="portfolio.removeStock">
     <remove-stock stock="portfolio.stock"></remove-stock>
   </div>

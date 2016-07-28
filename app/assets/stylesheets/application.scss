@@ -2,6 +2,7 @@
 $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 @import 'navbar';
+@import 'add_stock';
 @import 'stocks';
 @import 'remove_stock';
 @import 'inputs';

@@ -1,4 +1,19 @@
 function NavbarController($scope, $state, Auth){
+  ctrl = this;
+  ctrl.addStock = function(){
+    debugger;
+    // ctrl.error = '';
+    // StockService.queryStock(this.stock.symbol, StockResource.query()).then(function(stock){
+    //   if (typeof(stock) == 'string'){
+    //     clearForm(stock);
+    //   } else {
+    //     StockResource.create({stock: ctrl.stock}, function(stock){
+    //       $scope.$emit('addStock', stock), ctrl.stock = ''; $('#add-stock-modal').closeModal();
+    //     });
+    //   };
+    // });
+  };
+
   $scope.signedIn = Auth.isAuthenticated;
 
   $scope.logout = function(){
