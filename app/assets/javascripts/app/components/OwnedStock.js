@@ -2,7 +2,7 @@ var OwnedStock = {
   bindings: {
     stock: '='
   },
-  templateUrl: 'portfolio/stock.html',
+  templateUrl: 'portfolio/stock_card.html',
   controller: function($scope){
     var ctrl = this;
     ctrl.$inject = ['$scope'];
