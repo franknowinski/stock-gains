@@ -8,7 +8,6 @@ function PortfolioController($scope, Auth, usersStocks, StockService, StockResou
     };
     ctrl.stocks = stocks.length == undefined ? [stocks] : stocks;
   };
-
   function stockTickers(stocks) {
     return stocks.map(function(s){return s.symbol;}).join('+');
   };

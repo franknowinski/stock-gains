@@ -1,7 +1,60 @@
-// .collapsible-header {
-//   height: 150px;
-// }
-
+// Stock Card Header
 .stock-name {
   font-size: 19px;
+}
+
+.stock-header {
+  margin-bottom: 0px;
+}
+
+.stock-data-row {
+  .row {
+    margin-top: 3px;
+    margin-bottom: -35px;
+    padding: 0px;
+  }
+}
+
+.daily-return-column {
+  height: 65px;
+  margin-top: 12px;
+  padding-left: 2px;
+  border-left: 1px solid lightgray;
+}
+
+.collapsible-header i.stock-icon {
+  line-height: 1em;
+}
+.daily-return-column {
+  .row {
+    margin-bottom: -15px;
+  }
+}
+
+.stock-item-data {
+  margin-bottom: 3px;
+}
+
+// .positive {
+//   border: 1px solid green;
+// }
+//
+// .negative {
+//   border: 1px solid red;
+// }
+
+table {
+  th {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    line-height: 19px;
+  }
+  td {
+    padding: 0px;
+    margin-top: -10px;
+  }
+}
+
+.stock-table-column {
+  border-right: 1px solid #e0e0e0;
 }

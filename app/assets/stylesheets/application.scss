@@ -5,9 +5,12 @@ $primary-color: color("blue", "lighten-2") !default;
 @import 'add_stock';
 @import 'stocks';
 @import 'remove_stock';
+@import 'stock_card';
 @import 'inputs';
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 body {
   // background-image: url("http://il8.picdn.net/shutterstock/videos/1355794/thumb/1.jpg");
   // color: white;
+  font-family: 'Open Sans', sans-serif;
 }

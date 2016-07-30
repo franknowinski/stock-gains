@@ -1,20 +1,66 @@
-<ul class="collapsible" data-collapsible="accordion">
-   <li>
-     <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-     <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-   </li>
-   <li>
-     <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-     <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-   </li>
-   <li>
-     <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-     <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-   </li>
- </ul>
+<div class="row">
+  <div class="row">
+    <div class="col l3">
+      <h5 class="center-align">Add Stock</h5>
+    </div>
 
+    <div class="col l8">
+      <ul class="collapsible" data-collapsible="expandable">
+
+        <li ng-repeat="stock in portfolio.stocks | orderBy: '-dailyReturn'">
+          <div class="collapsible-header">
+
+            <div class="row stock-header">
+              <div class="col l11">
+                <h5 class="center-align">{{stock.Name}}</h5>
+              </div>
+
+              <div class="col l1">
+                <span><i class="center-align material-icons">settings</i></span>
+              </div>
+            </div>
+            <div class="divider"></div>
+
+            <div class="row stock-item-data">
+
+              <!-- stock-table data  -->
+              <div class="col l6">
+                <stock-table-data stock="stock"></stock-table-data>
+              </div>
+
+              <!-- stock table -->
+              <div class="col l5 stock-table">
+                <stock-table stock="stock"></stock-table>
+              </div>
+
+              <!-- daily return -->
+              <div class="col l1 daily-return-column">
+                <div class="row">
+                  <div ng-show="stock.Change > 0">
+                    <i class="center-align material-icons green-text lighten-1 stock-icon">trending_up</i>
+                  </div>
+
+                  <div ng-show="stock.Change < 0">
+                    <i class="material-icons red-text darken-4 stock-icon">trending_down</i>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <p class="daily-return-total" ng-class="{'green-text darken-4': stock.Change > 0, 'red-text darken-4': stock.Change < 0}">{{stock.dailyReturn | currency}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="collapsible-body">
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 <script>
 $(document).ready(function(){
-   $('.collapsible').collapsible({accordion : false });
- });
+  $('.collapsible').collapsible({accordion : false });
+});
 </script>
