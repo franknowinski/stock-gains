@@ -4,7 +4,7 @@
       <h5 class="center-align">Add Stock</h5>
     </div>
 
-    <div class="col l8">
+    <div class="col l8" ng-class="{'green lighten-5': stock.Change > 0, 'red': stock.Change < 0}">
       <ul class="collapsible" data-collapsible="expandable">
 
         <li ng-repeat="stock in portfolio.stocks | orderBy: '-dailyReturn'">

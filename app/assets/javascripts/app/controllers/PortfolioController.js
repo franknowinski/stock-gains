@@ -1,6 +1,9 @@
-function PortfolioController($scope, Auth, usersStocks, StockService, StockResource){
+function PortfolioController($scope, Auth, usersStocks, StockService, StockResource, TestService){
   var ctrl = this;
 
+  TestService.setStocks().then(function(res){
+    debugger;
+  })
   function assignSharesAndId(stocks) {
     for(var i = 0; i < stocks.length; i++) {
       stocks[i].id = usersStocks.data[i].id;
@@ -36,4 +39,4 @@ function PortfolioController($scope, Auth, usersStocks, StockService, StockResou
 
 angular
   .module('app')
-  .controller('PortfolioController', ['$scope', 'Auth', 'usersStocks', 'StockService', 'StockResource', PortfolioController]);
+  .controller('PortfolioController', ['$scope', 'Auth', 'usersStocks', 'StockService', 'StockResource', 'TestService', PortfolioController]);
