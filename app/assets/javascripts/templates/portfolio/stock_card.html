@@ -1,64 +1,87 @@
 <div class="row">
   <div class="row">
-    <div class="col l3">
-      <h5 class="center-align">Add Stock</h5>
+    <div class="col l2">
+      <h5 class="center-align">Daily return</h5>
+      <div class="divider"></div><br>
+      <h4 class="center-align">$999.99</h4>
+      <div class="divider"></div><br>
+
+      <div class="row">
+        <div class="col s12 center-align">
+          <a class="waves-effect waves-light btn blue darken-1 modal-trigger" href="#add-stock-modal">Add Stock</a>
+        </div>
+      </div>
     </div>
 
-    <div class="col l8" ng-class="{'green lighten-5': stock.Change > 0, 'red': stock.Change < 0}">
-      <ul class="collapsible" data-collapsible="expandable">
+    <div class="col l9" ng-class="{'green lighten-5': stock.Change > 0, 'red': stock.Change < 0}">
+      <div class="row">
+        <div class="col l3 center-align">
+          <h6><strong>Name</strong></h6>
+        </div>
+        <div class="col l1 right-align">
+          <h6><strong>Price</strong></h6>
+        </div>
+        <div class="col l1 right-align">
+          <h6><strong>Change</strong></h6>
+        </div>
+        <div class="col l1 center-align">
+          <h6><strong>Previous Close</strong></h6>
+        </div>
+        <div class="col l1 center-align">
+          <h6><strong>Shares</strong></h6>
+        </div>
+        <div class="col l2">
+          <h6><strong>Current Balance</strong></h6>
+        </div>
+        <div class="col l2">
+          <h6><strong>Day's Gain</strong></h6>
+        </div>
+      </div>
 
+      <ul class="collapsible popout" data-collapsible="accordion">
         <li ng-repeat="stock in portfolio.stocks | orderBy: '-dailyReturn'">
           <div class="collapsible-header">
-
-            <div class="row stock-header">
-              <div class="col l11">
-                <h5 class="center-align">{{stock.Name}}</h5>
+            <div class="row">
+              <div class="col l3">
+                <p>
+                  <i class="material-icons green-text lighten-1 stock-icon" ng-show="stock.Change > 0">trending_up</i>
+                  <i class="material-icons red-text darken-1 stock-icon" ng-show="stock.Change < 0">trending_down</i>
+                  {{stock.Name | limitTo: 20}}</p>
               </div>
-
+              <div class="col l1 left-align">
+                <p>{{stock.Ask | currency}}</p>
+              </div>
               <div class="col l1">
-                <span><i class="center-align material-icons">settings</i></span>
+                <p ng-class="{'green-text lighten-5': stock.Change > 0, 'red-text': stock.Change < 0}">{{stock.PercentChange}}</p>
               </div>
-            </div>
-            <div class="divider"></div>
-
-            <div class="row stock-item-data">
-
-              <!-- stock-table data  -->
-              <div class="col l6">
-                <stock-table-data stock="stock"></stock-table-data>
+              <div class="col l1 center-align">
+                <p>{{stock.PreviousClose | currency}}</p>
               </div>
-
-              <!-- stock table -->
-              <div class="col l5 stock-table">
-                <stock-table stock="stock"></stock-table>
+              <div class="col l1 center-align">
+                <p>{{stock.shares}}</p>
               </div>
-
-              <!-- daily return -->
-              <div class="col l1 daily-return-column">
-                <div class="row">
-                  <div ng-show="stock.Change > 0">
-                    <i class="center-align material-icons green-text lighten-1 stock-icon">trending_up</i>
-                  </div>
-
-                  <div ng-show="stock.Change < 0">
-                    <i class="material-icons red-text darken-4 stock-icon">trending_down</i>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <p class="daily-return-total" ng-class="{'green-text darken-4': stock.Change > 0, 'red-text darken-4': stock.Change < 0}">{{stock.dailyReturn | currency}}</p>
-                </div>
+              <div class="col l2 center-align">
+                <p>$100.00</p>
+                <!-- <p>{{stock.currentBalance | currency}}</p> -->
+              </div>
+              <div class="col l2 center-align">
+                <!-- <p ng-class="{'green-text lighten-5': stock.Change > 0, 'red': stock.Change < 0}">{{stock.dailyReturn | currency}}</p> -->
+                <p ng-class="{'green-text lighten-5': stock.Change > 0, 'red-text': stock.Change < 0}">$100.53</p>
+              </div>
+              <div class="col l1">
+                <!-- <p><a href=""><i class="material-icons" ng-show="stock.Change > 0">more_vert</i></a></p> -->
               </div>
             </div>
           </div>
-          <div class="collapsible-body">
-            <p>Lorem ipsum dolor sit amet.</p>
-          </div>
+
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
         </li>
       </ul>
     </div>
   </div>
 </div>
+<add-stock></add-stock>
+
 <script>
 $(document).ready(function(){
   $('.collapsible').collapsible({accordion : false });

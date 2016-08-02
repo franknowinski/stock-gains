@@ -1,14 +1,38 @@
-<table>
-  <thead>
-    <tr>
-      <th class="center-align" data-field="name">Last Traded Balance</th>
-      <th class="center-align"data-field="price">Previous Days Balance</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="center-align stock-table-column">{{portfolio.stock.currentBalance | currency}}</td>
-      <td class="center-align">{{portfolio.stock.previousBalance | currency}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="collapsible-header">
+  <div class="row center-align">
+    <div class="col l1">
+      <i class="center-align material-icons green-text lighten-1 stock-icon">trending_up</i>
+    </div>
+    <div class="col l2">
+      <p>{{portfolio.stock.Name}}</p>
+    </div>
+    <div class="col l1">
+      <p>{{portfolio.stock.Ask | currency}}</p>
+    </div>
+    <div class="col l1">
+      <p>{{portfolio.stock.PercentChange}}</p>
+    </div>
+    <div class="col l1">
+      <p>{{portfolio.stock.shares}}</p>
+    </div>
+    <div class="col l1">
+      <p>{{portfolio.stock.PreviousClose | currency}}</p>
+    </div>
+    <div class="col l2">
+      <p>{{portfolio.stock.currentBalance | currency}}</p>
+    </div>
+    <div class="col l2">
+      <p>{{portfolio.stock.previousBalance | currency}}</p>
+    </div>
+    <div class="col l1">
+      <p>{{portfolio.stock.dailyReturn | currency}}</p>
+    </div>
+  </div>
+</div>
+
+<div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+<script>
+$(document).ready(function(){
+  $('.collapsible').collapsible({accordion : false });
+});
+</script>
