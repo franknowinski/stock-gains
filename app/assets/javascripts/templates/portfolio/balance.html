@@ -1,0 +1,30 @@
+<div class="col l2 right-align">
+  <p>{{portfolio.stock.currentBalance | currency}}</p>
+</div>
+<div class="col l2 right-align">
+  <p>{{portfolio.stock.previousBalance | currency}}</p>
+</div>
+
+<div class="col l2" ng-init="options=false">
+  <div ng-hide="options" class="row">
+    <div class="col l10 right-align">
+      <p ng-class="{'green-text lighten-5': portfolio.stock.Change > 0, 'red-text': portfolio.stock.Change < 0}">{{portfolio.stock.dailyReturn | currency}}</p>
+    </div>
+    <div class="col l2">
+      <div ng-mouseenter="options=true" class="icon">
+        <i class="material-icons">more_vert</i>
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="options">
+    <div class="row" ng-mouseleave="options=false">
+      <div class="col l3 offset-l6">
+        <a href=""><i class="material-icons blue-text darken-2">delete</i></a>
+      </div>
+      <div class="col l3">
+        <a href=""><i class="material-icons blue-text darken-2">edit</i></a>
+      </div>
+    </div>
+  </div>
+</div>

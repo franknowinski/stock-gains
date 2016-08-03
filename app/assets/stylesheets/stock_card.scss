@@ -1,7 +1,19 @@
 .collapsible-header i.stock-icon {
-  line-height: 2em;
+  line-height: .5em;
 }
 
+.table-header {
+  margin-bottom: -4px;
+  width: 1020px;
+  padding: 0 1rem;
+}
+
+.collapsible-header {
+  line-height: 1em;
+  .row {
+    margin-bottom: 0px;
+  }
+}
 
 
 // // Stock Card Header

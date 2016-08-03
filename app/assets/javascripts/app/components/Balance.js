@@ -1,8 +1,8 @@
-var StockTable = {
+var Balance = {
   bindings: {
     stock: '='
   },
-  templateUrl: 'portfolio/stock_table.html',
+  templateUrl: 'portfolio/balance.html',
   controller: function($scope, $filter, StockHistoryService){
     var ctrl = this;
     ctrl.$inject = ['$scope', '$filter', 'StockHistoryService'];
@@ -41,4 +41,4 @@ var StockTable = {
 
 angular
   .module('app')
-  .component('stockTable', StockTable);
+  .component('balance', Balance);
