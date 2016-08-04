@@ -15,7 +15,7 @@ function StockHistoryService($http, $filter) {
     return [formatDate(previousDay), formatDate(today)];
   };
 
-  this.getPreviousDayStock = function(ticker){
+  this.getPreviousDay = function(ticker){
     var dates = getDates();
     return $http.get(previousStockPrices(ticker, dates[0], dates[1])).then(function(data){
       var quotes = data.data.query.results.quote;

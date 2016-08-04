@@ -1,21 +1,6 @@
-function PortfolioController($scope, Auth, usersStocks, StockService, StockResour){
+function PortfolioController($scope, Auth, usersStocks, StockService){
   var ctrl = this;
-
-  function assignSharesAndId(stocks) {
-    for(var i = 0; i < stocks.length; i++) {
-      stocks[i].id = usersStocks.data[i].id;
-      stocks[i].shares = usersStocks.data[i].shares;
-    };
-    ctrl.stocks = stocks.length == undefined ? [stocks] : stocks;
-  };
-
-  function stockTickers(stocks) {
-    return stocks.map(function(s){return s.symbol;}).join('+');
-  };
-
-  StockService.getStockData(stockTickers(usersStocks.data)).then(function(stocks) {
-    assignSharesAndId(stocks.length == undefined ? [stocks] : stocks);
-  });
+  ctrl.stocks = usersStocks;
 
   $scope.$on('addStock', function(e, savedStock) {
     StockService.getStockData(savedStock.symbol).then(function(stock) {
@@ -33,8 +18,34 @@ function PortfolioController($scope, Auth, usersStocks, StockService, StockResou
   Auth.currentUser().then(function(user) {
     ctrl.user = user;
   });
+
+  // function clearForm(error) {
+  //   ctrl.error = error, ctrl.stock = '';
+  // };
+  //
+  //
+  // ctrl.addStock = function(){
+  //   ctrl.error = '';
+  //   StockService.queryStock(this.stock.symbol, StockResource.query()).then(function(stock){
+  //     if (typeof(stock) == 'string'){
+  //       clearForm(stock);
+  //     } else {
+  //       StockResource.create({stock: ctrl.stock}, function(stock){
+  //         // $scope.$emit('addStock', stock), ctrl.stock = '';
+  //         $('#add-stock-modal').closeModal();
+  //       });
+  //     };
+  //   });
+  // };
+  //
+  // ctrl.toggleModal = function() {
+  //   $(function () {
+  //     $('.modal-trigger').leanModal();
+  //   });
+  // };
+  // ctrl.toggleModal();
 };
 
 angular
   .module('app')
-  .controller('PortfolioController', ['$scope', 'Auth', 'usersStocks', 'StockService', 'StockResource', PortfolioController]);
+  .controller('PortfolioController', ['$scope', 'Auth', 'usersStocks', 'StockService', PortfolioController]);

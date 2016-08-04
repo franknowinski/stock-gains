@@ -2,7 +2,7 @@
   <div class="col l2">
     <h5 class="center-align">Daily return</h5>
     <div class="divider"></div><br>
-    <h4 class="center-align">$999.99</h4>
+    <h4 class="center-align">{{portfolio.totalReturn | currency}}</h4>
     <div class="divider"></div><br>
 
     <div class="row">
@@ -12,74 +12,14 @@
     </div>
   </div>
 
-  <div class="stock-card">
-    <div class="col l10" ng-class="{'green lighten-5': stock.Change > 0, 'red': stock.Change < 0}">
-      <div class="row table-header">
-        <div class="col l2 center-align">
-          <h6><strong>Symbol</strong></h6>
-        </div>
-        <div class="col l1 right-align">
-          <h6><strong>Price</strong></h6>
-        </div>
-        <div class="col l1 right-align">
-          <h6><strong>Change</strong></h6>
-        </div>
-        <div class="col l1 center-align">
-          <h6><strong>Previous Close</strong></h6>
-        </div>
-        <div class="col l1 center-align">
-          <h6><strong>Shares</strong></h6>
-        </div>
-        <div class="col l2 right-align">
-          <h6><strong>Current Balance</strong></h6>
-        </div>
-        <div class="col l2 right-align">
-          <h6><strong>Previous Balance</strong></h6>
-        </div>
-        <div class="col l2 center-align">
-          <h6><strong>Day's Gain</strong></h6>
-        </div>
-      </div>
-
-      <ul class="collapsible popout" data-collapsible="accordion">
-        <li ng-repeat="stock in portfolio.stocks | orderBy: '-dailyReturn'">
-          <div class="collapsible-header">
-            <div class="row">
-              <div class="col l2">
-                <p>
-                  <i class="material-icons green-text lighten-1 stock-icon" ng-show="stock.Change > 0">trending_up</i>
-                  <i class="material-icons red-text darken-1 stock-icon" ng-show="stock.Change < 0">trending_down</i>
-                  {{stock.symbol | uppercase}}</p>
-              </div>
-              <div class="col l1 right-align">
-                <p>{{stock.Ask | currency}}</p>
-              </div>
-              <div class="col l1 right-align">
-                <p ng-class="{'green-text lighten-5': stock.Change > 0, 'red-text': stock.Change < 0}">{{stock.PercentChange}}</p>
-              </div>
-              <div class="col l1 center-align">
-                <p>{{stock.PreviousClose | currency}}</p>
-              </div>
-              <div class="col l1 center-align">
-                <p>{{stock.shares | number:4}}</p>
-              </div>
-
-              <balance stock="stock"></balance>
-            </div>
-          </div>
-
-          <div class="collapsible-body">
-            <p><a href="" ng-click="portfolio.deleteStock(stock)"><i class="material-icons">delete</i></a></p>
-          </div>
-        </li>
-      </ul>
-    </div>
+  <!-- <div class="stock-card"> -->
+  <div class="col l10 stock-card">
+    <!-- stock table header -->
+    <table-header></table-header>
+    <!-- users stock data -->
+    <stocks-table stocks="portfolio.stocks"></stocks-table>
   </div>
 </div>
-<add-stock></add-stock>
 
-<script>
-$(document).ready(function(){
-  $('.collapsible').collapsible({accordion : false });
-});
-</script>
+<!-- add stock to portfolio -->
+<add-stock></add-stock>

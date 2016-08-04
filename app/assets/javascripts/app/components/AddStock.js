@@ -8,7 +8,6 @@ var AddStock = {
       ctrl.error = error, ctrl.stock = '';
     };
 
-
     ctrl.addStock = function(){
       ctrl.error = '';
       StockService.queryStock(this.stock.symbol, StockResource.query()).then(function(stock){
