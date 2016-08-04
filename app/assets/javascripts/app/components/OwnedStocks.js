@@ -2,22 +2,45 @@ var OwnedStocks = {
   bindings: {
     stocks: '='
   },
-  templateUrl: 'portfolio/stock_card.html',
-  controller: function($scope, StockService, StockHistoryService, StockResource, DateService, Stock){
+  templateUrl: 'portfolio/body/main_section.html',
+  controller: function($scope, $rootScope, StockService, StockHistoryService, Stock){
     var ctrl = this;
-    ctrl.$inject = ['$scope', 'StockService', 'StockHistoryService', 'StockResource', 'DateService', 'Stock'];
+    ctrl.$inject = ['$scope', '$rootScope', 'StockService', 'StockHistoryService', 'Stock'];
 
     ctrl.stocks = this.stocks;
     ctrl.totalReturn = 0;
 
-    ctrl.stocks.forEach(function(stock){
+    function setPreviousDay(stock) {
       StockHistoryService.getPreviousDay(stock.symbol).then(function(quotes){
         Stock.assignPreviousDay(stock, quotes);
-        ctrl.totalReturn = ctrl.totalReturn + stock.dailyReturn;
+        ctrl.totalReturn += stock.daysReturn;
+      });
+    };
+
+    if (ctrl.stocks !== undefined) {
+      ctrl.stocks.forEach(function(stock){
+        setPreviousDay(stock);
+      });
+    };
+
+    $rootScope.$on('addStock', function(e, persistedStock) {
+      StockService.getStockData(persistedStock.symbol).then(function(stock) {
+        stock.id = persistedStock.id, stock.shares = persistedStock.shares;
+        setPreviousDay(stock);
+        ctrl.stocks === undefined ? ctrl.stocks = [stock] : ctrl.stocks.push(stock)
       });
     });
+
+    $rootScope.$on('removeStock', function(e, deletedStock) {
+      for(var i = 0; i < ctrl.stocks.length; i++){
+        if (ctrl.stocks[i].symbol == deletedStock.symbol) {
+          ctrl.totalReturn -= deletedStock.daysReturn;
+          ctrl.stocks.splice(i, 1);
+        }
+      };
+    });
   },
-  controllerAs: 'portfolio'
+  controllerAs: 'ownedStocks'
 };
 
 angular

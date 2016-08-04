@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col l2">
-    <h5 class="center-align">Daily return</h5>
+    <h5 class="center-align">Total gain</h5>
     <div class="divider"></div><br>
-    <h4 class="center-align">{{portfolio.totalReturn | currency}}</h4>
+    <h4 class="center-align">{{ownedStocks.totalReturn | currency}}</h4>
     <div class="divider"></div><br>
 
     <div class="row">
@@ -17,7 +17,7 @@
     <!-- stock table header -->
     <table-header></table-header>
     <!-- users stock data -->
-    <stocks-table stocks="portfolio.stocks"></stocks-table>
+    <stocks-table stocks="ownedStocks.stocks"></stocks-table>
   </div>
 </div>
 

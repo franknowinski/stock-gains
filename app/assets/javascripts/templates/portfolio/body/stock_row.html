@@ -24,7 +24,7 @@
   <p>{{portfolio.stock.previousBalance | currency}}</p>
 </div>
 <div class="col l2 center-align">
-  <p ng-class="{'green-text lighten-5': portfolio.stock.Change > 0, 'red-text': portfolio.stock.Change < 0}">{{portfolio.stock.dailyReturn | currency}}</p>
+  <p ng-class="{'green-text lighten-5': portfolio.stock.Change > 0, 'red-text': portfolio.stock.Change < 0}">{{portfolio.stock.daysReturn| currency}}</p>
 </div>
 <!-- <div class="col l2" ng-init="options=false">
 

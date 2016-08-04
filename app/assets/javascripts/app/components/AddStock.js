@@ -1,8 +1,8 @@
 var AddStock = {
   templateUrl: 'portfolio/add_stock_form.html',
-  controller: function($scope, StockResource, StockService){
+  controller: function($rootScope, StockResource, StockService){
     var ctrl = this;
-    ctrl.$inject = ['$scope', 'StockResource', 'StockService'];
+    ctrl.$inject = ['$rootScope', 'StockResource', 'StockService'];
 
     function clearForm(error) {
       ctrl.error = error, ctrl.stock = '';
@@ -15,7 +15,9 @@ var AddStock = {
           clearForm(stock);
         } else {
           StockResource.create({stock: ctrl.stock}, function(stock){
-            $scope.$emit('addStock', stock), ctrl.stock = ''; $('#add-stock-modal').closeModal();
+            $rootScope.$broadcast('addStock', stock);
+            ctrl.stock = '';
+            $('#add-stock-modal').closeModal();
           });
         };
       });
@@ -28,7 +30,7 @@ var AddStock = {
     };
     ctrl.toggleModal();
   },
-  controllerAs: 'portfolio'
+  controllerAs: 'addStock'
 };
 
 angular

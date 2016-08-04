@@ -23,16 +23,24 @@ function StockService($http, StockHistoryService) {
     };
   };
 
+  service.getStockData = function(ticker) {
+    return $http.get(baseUrl(ticker)).then(function(res){
+      return res.data.query.results.quote;
+    });
+  }
+
   service.getUsersStocks = function() {
     return $http.get('/api/v1/stocks').then(function(res){
-      return service.setStocks(res.data);
+      if (res.data.length > 0) {
+        return service.setStocks(res.data);
+      };
     });
   };
 
   service.setStocks = function(stocks) {
     return $http.get(baseUrl(stockTickers(stocks))).then(function(res){
       var quotes = res.data.query.results.quote;
-      return assignSharesAndId(stocks, quotes);
+      return assignSharesAndId(stocks, quotes.length == undefined ? [quotes] : quotes);
     });
   };
 

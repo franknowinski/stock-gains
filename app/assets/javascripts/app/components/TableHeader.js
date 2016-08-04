@@ -1,5 +1,5 @@
 var TableHeader = {
-  templateUrl: 'portfolio/table_header.html',
+  templateUrl: 'portfolio/body/table_header.html',
 };
 
 angular

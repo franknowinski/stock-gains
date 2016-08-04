@@ -4,7 +4,7 @@ function Stock(DateService){
   function assignBalance(stock) {
     stock.currentBalance = stock.shares * stock.Ask;
     stock.previousBalance = stock.shares * stock.previousDay.Close;
-    stock.dailyReturn = stock.currentBalance - stock.previousBalance;
+    stock.daysReturn = stock.currentBalance - stock.previousBalance;
     return stock;
   };
 

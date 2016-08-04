@@ -1,0 +1,29 @@
+<ul class="collapsible popout" data-collapsible="accordion">
+  <li ng-repeat="stock in stocksTable.stocks | orderBy:'-dailyReturn'">
+    <div class="collapsible-header">
+      <div class="row">
+        <stock-row stock="stock"></stock-row>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible-body">
+      <div class="row">
+        <div class="col l2 offset-l10 right-align">
+          <a href="">
+            <i class="material-icons">edit</i>
+          </a><br>
+          <a href="">
+            <i class="material-icons" ng-click="stocksTable.deleteStock(stock)">delete</i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<script>
+$(document).ready(function(){
+  $('.collapsible').collapsible({accordion : false });
+});
+</script>

@@ -2,18 +2,18 @@ var StocksTable = {
   bindings: {
     stocks: '='
   },
-  templateUrl: 'portfolio/stocks_table.html',
-  controller: function($scope, StockResource) {
+  templateUrl: 'portfolio/body/stocks_table.html',
+  controller: function($rootScope, StockResource) {
     var ctrl = this;
-    ctrl.$inject = ['$scope', 'StockResource'];
+    ctrl.$inject = ['$rootScope', 'StockResource'];
 
-    ctrl.deleteStock = function(deleteStock) {
-      StockResource.delete({symbol: deleteStock.symbol}, function(stock){
-        $scope.$emit('removeStock', stock);
+    ctrl.deleteStock = function(stock) {
+      StockResource.delete({symbol: stock.symbol}, function(s){
+        $rootScope.$broadcast('removeStock', stock);
       });
     };
   },
-  controllerAs: 'portfolio'
+  controllerAs: 'stocksTable'
 };
 
 angular
