@@ -1,4 +1,4 @@
-function StockService($http, $filter, StockHistoryService) {
+function StockService($http, StockHistoryService) {
   var service = this;
 
   function baseUrl(ticker) {
@@ -56,4 +56,4 @@ function StockService($http, $filter, StockHistoryService) {
 
 angular
   .module('app')
-  .service('StockService', ['$http', '$filter', 'StockHistoryService', StockService]);
+  .service('StockService', ['$http', 'StockHistoryService', StockService]);

@@ -1,18 +1,13 @@
-function StockHistoryService($http, $filter) {
+function StockHistoryService($http, DateService) {
 
   function previousStockPrices(ticker, startDate, endDate) {
     return "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.historicaldata%20where%20symbol%20=%20%22" + ticker + "%22%20and%20startDate%20=%20%22" + startDate + "%22%20and%20endDate%20=%20%22" + endDate + "%22&diagnostics=true&env=store://datatables.org/alltableswithkeys&format=json"
   };
 
-  function formatDate(date) {
-    return $filter('date')(date,'yyyy-MM-dd')
-  };
-
   function getDates(startDate, endDate) {
-    var today = new Date();
-    var previousDay = new Date();
+    var today = new Date(), previousDay = new Date();
     previousDay = previousDay.setDate(previousDay.getDate()-6);
-    return [formatDate(previousDay), formatDate(today)];
+    return [DateService.formatDate(previousDay), DateService.formatDate(today)];
   };
 
   this.getPreviousDay = function(ticker){
@@ -26,4 +21,4 @@ function StockHistoryService($http, $filter) {
 
 angular
   .module('app')
-  .service('StockHistoryService', ['$http', '$filter', StockHistoryService]);
+  .service('StockHistoryService', ['$http', 'DateService', StockHistoryService]);
